@@ -1,11 +1,12 @@
-# Create two m-KP-MOP problem instances with n = 5, J ∈ {2, 3}, m = 1, U = 40
-# usingAlgorithm4(oneforJ=2andoneforJ=3).
-# Youneedtosetseed=last five digits of a group member’s student number
-# in the generation algorithm. You can use numpy.random.seed(seed) function to do that.
+
 import numpy as np
 import math
 
 def m_KP_MOP(n, m, J, U):
+    #n number of items
+    #m number of dimensions in knapsack
+    #J number of knapsacks
+
     if U < 40:
         return "Error, U must be greater than 40"
 
@@ -26,10 +27,9 @@ def m_KP_MOP(n, m, J, U):
         b.append(max(temp))  #b is capacity in k
 
 
-
     # Writing to txt
-    instance_num = input("What is the instance number:   ")
-    instance = "instance" + instance_num
+    instance_num = input("What is the instance number:   ") #for text file name
+    instance = "instance" + str(instance_num)
 
     file = open(instance + ".txt","w+")
     file.write(str(n) +  "\n")
@@ -38,17 +38,27 @@ def m_KP_MOP(n, m, J, U):
         file.write('\n')
 
     for j in range(J):
-        file.write(str(np.array(c)[:,j]*-1)) #check that it's negative 1
+        s = str(np.array(c)[:,j]*-1)
+        s = list(s)
+        s.pop(0)
+        s.pop(len(s) - 1)
+        s = "".join(s)
+        file.write(s) #check that it's negative 1
         file.write('\n')
 
     for i in range(m):
-        file.write(str(np.array(a)[:,i]))
+        s = str(np.array(a)[:,i])
+        s = list(s)
+        s.pop(0)
+        s.pop(len(s) - 1)
+        s = "".join(s)
+        file.write(s)
         file.write('\n')
 
     file.close()
 
-m_KP_MOP(5, 1, 1, 40)
-#m_KP_MOP(5, 1, 2, 40)
+m_KP_MOP(5, 1, 2, 40)
+
 
 
 
