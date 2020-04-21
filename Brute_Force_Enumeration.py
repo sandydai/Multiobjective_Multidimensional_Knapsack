@@ -5,7 +5,6 @@ import RemoveNonDominated
 
 def brute_force(file):
     n, b, c, a = Read_file.read_instance(file)
-    print("1")
 
     ### is C negative??
     ##taking in C as negative values will mean we want to minimize (in order to maximize)
@@ -20,7 +19,6 @@ def brute_force(file):
 
     x_list = list(itertools.product([0, 1], repeat=int(n)))
 
-    print("2")
 
     for x in x_list:
 
@@ -35,20 +33,18 @@ def brute_force(file):
 
     for val in feasible:
         temp = []
-        for k in range(len(b)):
+        for k in range(len(c)):
             temp.append(np.dot(c[k], val))
         Z.append(temp)
 
     # print(Z)
     Z_temp = np.unique(Z, axis = 0)
     # print(Z_temp)
-    print("x")
-
     Z = RemoveNonDominated.BFM_NDP(Z_temp)
 
     return Z
 
-brute_force("input")
+print(brute_force("input"))
 
 
 
