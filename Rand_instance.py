@@ -32,32 +32,61 @@ def m_KP_MOP(n, m, J, U):
     instance = "instance" + str(instance_num)
 
     file = open(instance + ".txt","w+")
-    file.write(str(n) +  "\n")
+    file.write(str(n) + "\n")
     for i in range(len(b)):
         file.write(str(b[i]))
         file.write('\n')
 
     for j in range(J):
         s = str(np.array(c)[:,j]*-1)
-        s = list(s)
-        s.pop(0)
-        s.pop(len(s) - 1)
-        s = "".join(s)
-        file.write(s) #check that it's negative 1
+        st = s.replace("  ", " ")
+        s1 = st.replace("[", "")
+        s2 = s1.replace("]", "")
+        file.write(s2) #check that it's negative 1
         file.write('\n')
 
     for i in range(m):
         s = str(np.array(a)[:,i])
-        s = list(s)
-        s.pop(0)
-        s.pop(len(s) - 1)
-        s = "".join(s)
-        file.write(s)
+        st = s.replace("  ", " ")
+        s1 = st.replace("[", "")
+        s2 = s1.replace("]", "")
+        file.write(s2)
         file.write('\n')
 
     file.close()
 
-m_KP_MOP(5, 1, 2, 40)
+m_KP_MOP(5, 2, 2, 40)
+# c = np.random.randint(1, high=40, size=(10, 2))
+#
+# for j in range(1):
+#     s = str(np.array(c)[:,j]*-1)
+#     print(s)
+#     a = s.replace("  ", " ")
+#     print(a)
+#     s1 = a.replace("[","")
+#     s2 = s1.replace("]","")
+#     print(s2)
+
+    #
+    # s1=list(a)
+    # s1.remove("[")
+    # s1.remove("]")
+    # print(s1)
+    # s = "".join(map(str, s))
+
+    # s = "".join(s)
+#print(s)
+
+# s = str(np.array(a)[:, i])
+# s = list(s)
+# s.pop(0)
+# s.pop(len(s) - 1)
+# s = "".join(map(str, s))
+# file.write(s)
+# file.write('\n')
+
+
+
 
 
 
