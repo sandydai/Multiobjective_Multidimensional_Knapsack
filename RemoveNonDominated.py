@@ -3,9 +3,6 @@ import numpy as np
 def BFM_NDP(Z):
     NDP = []
     pareto_front = np.ones(len(Z), dtype=bool) #initialize all feasible values as True
-    print(pareto_front)
-    p2 = np.ones(len(Z), dtype=bool) #initialize all feasible values as True
-
 
     #loop through Z and compare scores - if score is lower than NDP
     #j dominates/same as all i AND one of j is better than one of i
@@ -23,11 +20,6 @@ def BFM_NDP(Z):
     return np.array(NDP)
 
 
-
-
-
-
-
     #loop through entire array of solutions, if
 def weightedsum(array):
     NDP = []
@@ -35,4 +27,4 @@ def weightedsum(array):
 
     return NDP
 
-print(BFM_NDP(np.array([[7,1],[4,2], [-1,3]])))
+# print(BFM_NDP(np.array([[7,1],[4,2], [-1,3]])))
