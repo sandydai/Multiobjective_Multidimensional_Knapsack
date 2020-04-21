@@ -18,7 +18,7 @@ def brute_force(file,m,j):
 
         for k in range(len(b)):
 
-            if np.dot(c[k], x) >= b[k][0]:
+            if np.dot(c[k], x) >= b[k]:
                 check =False
                 break
             if k == len(b)-1:
