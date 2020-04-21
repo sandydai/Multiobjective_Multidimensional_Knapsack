@@ -1,44 +1,48 @@
 import numpy as np
 import Read_file
+import itertools
+import RemoveNonDominated
 
-def brute_force(file,m,j):
-    n, b, c, a = Read_file.read_instance(file, 2, 2)
+def brute_force(file):
+    n, b, c, a = Read_file.read_instance(file)
+
+    ### is C negative??
+    ##taking in C as negative values will mean we want to minimize (in order to maximize)
+
     #ennumerate all binary solutions and check which ones satisfy knapsack constraints
-
-    #option - randomly generate binary x vector and check if solution is feasible
 
     #Ennumerate all points
 
     feasible = []
-    N = 10000
     #check if satisfies X, if yes then append to f
     check = False
-    for i in range(N):
-        x = np.random.randint(2, size=int(n))
+    x_list = list(itertools.product([0, 1], repeat=int(n)))
 
-        for k in range(len(b)):
+    for x in x_list:
+        # print("start")
+        # print(x)
+        count = 0
+        for k in range(len(b)): #loop through all knapsacks
+            # print(np.dot(a[k], x))
+            # print(b[k])
 
-            if np.dot(c[k], x) >= b[k]:
+            if np.dot(a[k], x) > b[k]:
                 check =False
-                break
-            if k == len(b)-1:
-                feasible.append(x)
+                break #if doesn't meet one of the constraints, then move to next x
+            count +=1
+        if count == len(b):
+            feasible.append(x)
 
+    Z = []
+    for val in feasible:
+        Z.append(np.dot(c[k], val))
+    Z_temp = np.unique(np.array(Z))
 
-    #Find feasible Images
-
-    ### Check MEANING!!
-
-
-    #Remove duplicates
-    temp = [tuple(row) for row in feasible]
-    Z = np.unique(temp)
-
-    #Remove Dominated
+    Z = RemoveNonDominated.BFM_NDP(Z_temp)
 
     return Z
 
-brute_force("instance6",2,2)
+print(brute_force("ExampleData"))
 
 
 
