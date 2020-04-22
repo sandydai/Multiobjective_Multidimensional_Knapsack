@@ -40,11 +40,11 @@ def brute_force(file):
     # print(Z)
     Z_temp = np.unique(Z, axis = 0)
     # print(Z_temp)
-    Z = RemoveNonDominated.BFM_NDP(Z_temp)
+    Z = RemoveNonDominated.remove_dominated(Z_temp)
 
     return Z
 
-brute_force("instance2")
+brute_force("instance3")
 
 
 

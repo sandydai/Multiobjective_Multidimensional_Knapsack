@@ -1,6 +1,6 @@
 import numpy as np
 
-def BFM_NDP(Z):
+def remove_dominated(Z):
     NDP = []
     pareto_front = np.ones(len(Z), dtype=bool) #initialize all feasible values as True
 

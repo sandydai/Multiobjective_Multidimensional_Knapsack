@@ -42,6 +42,7 @@ def m_KP_MOP(n, m, J, U):
         st = s.replace("  ", " ")
         s1 = st.replace("[", "")
         s2 = s1.replace("]", "")
+        s2 = s2.strip()
         file.write(s2) #check that it's negative 1
         file.write('\n')
 
@@ -50,12 +51,13 @@ def m_KP_MOP(n, m, J, U):
         st = s.replace("  ", " ")
         s1 = st.replace("[", "")
         s2 = s1.replace("]", "")
+        s2 = s2.strip()
         file.write(s2)
         file.write('\n')
 
     file.close()
 
-#m_KP_MOP(5, 2, 3, 40)
+m_KP_MOP(4, 2, 3, 40)
 
 
 c = np.random.randint(1, high=40, size=(10, 3))
