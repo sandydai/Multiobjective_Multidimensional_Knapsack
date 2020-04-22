@@ -36,7 +36,7 @@ def read_instance(file):
     for i in range(j): #C vectors start from index = 1+m
 
         temp = lines[i + 1+m].split(" ")
-        print(temp)
+
 
         c.append(to_float(temp))
 

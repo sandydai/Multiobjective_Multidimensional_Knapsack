@@ -17,8 +17,7 @@ from datetime import datetime
 
 def LexMin_Helper(file, axis, z1, z2, constraint):
     #Max Z1, min Z2
-    print(z1)
-    print(z2)
+
 
     n, b, c, a = Read_file.read_instance(file)
     z_i = -1
@@ -110,21 +109,25 @@ def Rectangle_Division(file):
 
     while len(Rectangles) != 0:
         R = Rectangles[0]
-        print(R)
+        #print(R)
         Rectangles.remove(R)
         R_2 = Bisect(R)
         print(R_2[0], R_2[1])
 
         z_hat = LexMin(file, 0, R_2[0], R_2[1])
-        print(z_hat)
+        #print(z_hat)
         if z_hat[0] == -1 or z_hat[1] == -1: #non-feasible solution
             continue
         if z_hat[0] != R[1] and z_hat not in FoundNDPs:
             FoundNDPs.append(z_hat)
             Rectangles.append([R[0], z_hat])
-            print(1)
-        R_3 = [R[0], [z_hat[0] - eps, Bisect(R)]]
+        #print(1)
+        R_3 = [R[0], [z_hat[0] - eps, (R[0][1] + R[1][1])/2]]
+        print(R_3[0], R_3[1])
+
+
         z_hat = LexMin(file, 1, R_3[1], R_3[0])
+        print(z_hat)
         if z_hat[0] == -1 or z_hat[1] == -1: #non-feasible solution
             continue
         if z_hat!= R[0] and z_hat not in FoundNDPs:
@@ -133,12 +136,11 @@ def Rectangle_Division(file):
             print(1)
 
 
-
     return FoundNDPs
 
 z_nw = LexMin("input", 0, None, None)
 z_se = LexMin("input", 1, None, None)
-print(Rectangle_Division("input"))
+Rectangle_Division("input")
 #print(LexMin("input", 0, z_nw,z_se))
 
 
