@@ -2,6 +2,8 @@ import numpy as np
 import Read_file
 import itertools
 import RemoveNonDominated
+import time
+import matplotlib
 
 def brute_force(file):
     n, b, c, a = Read_file.read_instance(file)
@@ -44,7 +46,12 @@ def brute_force(file):
 
     return Z
 
-brute_force("instance3")
+
+def BFtime(file):
+    start_time = time.perf_counter()
+    sol = brute_force(file)
+    total_time = time.perf_counter() - start_time
+    return total_time
 
 
 

@@ -57,17 +57,17 @@ def m_KP_MOP(n, m, J, U):
 
     file.close()
 
-m_KP_MOP(4, 2, 3, 40)
+m_KP_MOP(50, 2, 2, 40)
 
 
-c = np.random.randint(1, high=40, size=(10, 3))
-print(c)
-
-for j in range(1):
-    s = str(np.array(c)[:, j] * -1)
-    st = s.replace("  ", " ")
-    s1 = st.replace("[", "")
-    s2 = s1.replace("]", "")
+# c = np.random.randint(1, high=40, size=(10, 3))
+# print(c)
+#
+# for j in range(1):
+#     s = str(np.array(c)[:, j] * -1)
+#     st = s.replace("  ", " ")
+#     s1 = st.replace("[", "")
+#     s2 = s1.replace("]", "")
 
     #
     # s1=list(a)

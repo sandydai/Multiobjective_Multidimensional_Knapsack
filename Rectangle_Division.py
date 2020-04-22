@@ -84,16 +84,10 @@ def LexMin(file, axis, z1, z2): #axis = 0 for NW and 1 for SE
 
     return [z_1,z_2]
 
-def Bisect(R):
-    new_R = []
-    temp = [R[0][0], (R[0][1] + R[1][1])/2]
-    new_R.append(temp)
-    new_R.append(R[1])
-    return new_R
 
 def Rectangle_Division(file):
     n, b, c, a = Read_file.read_instance(file)
-    eps = 0.1
+    eps = 0.01
 
     FoundNDPs = []
 
@@ -105,43 +99,54 @@ def Rectangle_Division(file):
 
     Rectangles = [[z_nw, z_se]]
 
-    print(Rectangles)
-
+    divisions = 0
     while len(Rectangles) != 0:
         R = Rectangles[0]
-        #print(R)
+        divisions +=1
+        print(R)
+
         Rectangles.remove(R)
-        R_2 = Bisect(R)
+
+        #lower rectangle
+        R_2 = [[R[0][0], (R[0][1] + R[1][1])/2], R[1]]
         print(R_2[0], R_2[1])
+        #R = [[-10608, -10350], [-10090, -10812]]
 
         z_hat = LexMin(file, 0, R_2[0], R_2[1])
-        #print(z_hat)
+        print(z_hat)
         if z_hat[0] == -1 or z_hat[1] == -1: #non-feasible solution
             continue
         if z_hat[0] != R[1] and z_hat not in FoundNDPs:
             FoundNDPs.append(z_hat)
-            Rectangles.append([R[0], z_hat])
-        #print(1)
-        R_3 = [R[0], [z_hat[0] - eps, (R[0][1] + R[1][1])/2]]
-        print(R_3[0], R_3[1])
+            Rectangles.append([z_hat, R[1]])
 
+        #top Rectangle
 
-        z_hat = LexMin(file, 1, R_3[1], R_3[0])
+        R_3 = [R[1], (z_hat[0] - eps, (R[0][1] + R[1][1]) / 2)]
+
+        print("zhat")
+        print(R_3)
+
+        z_hat = LexMin(file, 1, R_3[0], R_3[1])
+
         print(z_hat)
         if z_hat[0] == -1 or z_hat[1] == -1: #non-feasible solution
             continue
-        if z_hat!= R[0] and z_hat not in FoundNDPs:
+        if z_hat != R[0] and z_hat not in FoundNDPs:
             FoundNDPs.append(z_hat)
             Rectangles.append([R[0], z_hat])
             print(1)
 
 
-    return FoundNDPs
+    return FoundNDPs, divisions
 
-z_nw = LexMin("input", 0, None, None)
-z_se = LexMin("input", 1, None, None)
-Rectangle_Division("input")
-#print(LexMin("input", 0, z_nw,z_se))
+# z_nw = LexMin("input", 0, None, None)
+# z_se = LexMin("input", 1, None, None)
+print(Rectangle_Division("input"))
+
+
+
+#(LexMin("input", 0, [-10608, -10350],[-10608.1, -10581.0]))
 
 
 
