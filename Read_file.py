@@ -20,14 +20,14 @@ def read_instance(file):
     with open(path) as f:
         lines = [line.rstrip() for line in f]
 
-    n = float(lines[0])
+    n = int(lines[0])
     temp = lines[1]
-    b.append(float(temp))
+    b.append(int(temp))
     m = 1
 
     while len(lines[1+m].split(" ")) < 2:
         temp = lines[1+m]
-        b.append(float(temp))
+        b.append(int(temp))
         m+=1
 
     j = len(lines) - (2*m + 1) #number of C vectors
@@ -36,6 +36,7 @@ def read_instance(file):
     for i in range(j): #C vectors start from index = 1+m
 
         temp = lines[i + 1+m].split(" ")
+        print(temp)
 
         c.append(to_float(temp))
 
@@ -47,7 +48,7 @@ def read_instance(file):
     return n, b, c, a
 
 
-# n,b,c,a = read_instance("instance6")
+#print(read_instance("instance6"))
 # print(n,b,c,a)
 
 

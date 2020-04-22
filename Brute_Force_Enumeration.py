@@ -44,7 +44,7 @@ def brute_force(file):
 
     return Z
 
-print(brute_force("input"))
+brute_force("instance2")
 
 
 
