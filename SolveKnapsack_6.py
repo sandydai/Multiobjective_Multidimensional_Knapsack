@@ -242,7 +242,7 @@ def LexMin_Helper(file, axis, z1, z2, constraint):
     #Max Z1, min Z2
 
 
-    n, b, c, a = Read_file.read_instance(file)
+    n, b, c, a = read_instance(file)
     z_i = -1
 
     #set opposite axis
@@ -401,9 +401,9 @@ def supernal_method(file):
         temp = np.random.randint(-1, 1, size=J)
         region.append(temp)
 
-    region = 0
+    regions = 0
     while (len(region) >= 1):  # Regions are not empty
-        region +=1
+        regions +=1
         processing = region.pop(0)
         _zMinimize = weighted_sum_single_OOP(file, processing)
 
@@ -432,7 +432,7 @@ def supernal_method(file):
         else:
             continue
 
-    return feasible, region
+    return feasible, regions
 
 supernal_method("input")
 

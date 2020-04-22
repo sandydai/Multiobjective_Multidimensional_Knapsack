@@ -53,6 +53,24 @@ def BFtime(file):
     total_time = time.perf_counter() - start_time
     return total_time
 
+f = "instance"
+
+x = []
+#x.append(BFtime(f+"1"))
+x.append(BFtime(f+"2"))
+print(x)
+x.append(BFtime(f+"3"))
+print(x)
+#x.append(BFtime(f+"4"))
+x.append(BFtime(f+"5"))
+print(x)
+x.append(BFtime(f+"6"))
+print(x)
+#x.append(BFtime(f+"7"))
+x.append(BFtime(f+"8"))
+print(x)
+x.append(BFtime(f+"9"))
+
 
 
 

@@ -6,6 +6,7 @@ def m_KP_MOP(n, m, J, U):
     #n number of items
     #m number of dimensions in knapsack
     #J number of knapsacks
+    np.set_printoptions(linewidth=np.inf)
 
     if U < 40:
         return "Error, U must be greater than 40"
@@ -57,7 +58,7 @@ def m_KP_MOP(n, m, J, U):
 
     file.close()
 
-m_KP_MOP(50, 2, 2, 40)
+m_KP_MOP(5, 2, 2, 40)
 
 
 # c = np.random.randint(1, high=40, size=(10, 3))

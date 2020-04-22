@@ -61,9 +61,9 @@ def supernal_method(file):
         temp = np.random.randint(-1, 1, size=J)
         region.append(temp)
 
-    region = 0
+    regions = 0
     while (len(region) >= 1):  # Regions are not empty
-        region +=1
+        regions +=1
         processing = region.pop(0)
         _zMinimize = weighted_sum_single_OOP(file, processing)
 
@@ -92,7 +92,7 @@ def supernal_method(file):
         else:
             continue
 
-    return feasible, region
+    return feasible, regions
 
 supernal_method("input")
 
@@ -102,3 +102,21 @@ def supernal_time(file):
     NDP = supernal_method(file)
     total_time = time.perf_counter() - start_time
     return total_time
+
+x = []
+f = "instance"
+
+# x.append(supernal_time(f+"1"))
+# x.append(supernal_time(f+"2"))
+# print(x)
+# x.append(supernal_time(f+"3"))
+print(x)
+x.append(supernal_time(f+"4"))
+x.append(supernal_time(f+"5"))
+print(x)
+x.append(supernal_time(f+"6"))
+print(x)
+x.append(supernal_time(f+"7"))
+x.append(supernal_time(f+"8"))
+print(x)
+x.append(supernal_time(f+"9"))
